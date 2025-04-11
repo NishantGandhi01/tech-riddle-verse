@@ -2,8 +2,8 @@
 import { Topic } from "@/types";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { LucideIcon } from "lucide-react";
 import * as Icons from "lucide-react";
+import { LucideIcon } from "lucide-react";
 
 interface TopicCardProps {
   topic: Topic;
@@ -12,7 +12,8 @@ interface TopicCardProps {
 
 const TopicCard = ({ topic, onSelect }: TopicCardProps) => {
   // Dynamically get the icon from Lucide
-  const Icon = (Icons as Record<string, LucideIcon>)[topic.icon] || Icons.HelpCircle;
+  // Cast Icons as any to avoid TypeScript errors with dynamic access
+  const Icon = (Icons as any)[topic.icon] || Icons.HelpCircle;
 
   return (
     <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-md hover:border-primary/50">
